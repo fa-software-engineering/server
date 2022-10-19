@@ -1,4 +1,4 @@
-package ru.fa.software.engineering.rasserver.dbms.entities;
+package ru.fa.software.engineering.server.dbms.entities;
 
 import java.time.OffsetDateTime;
 

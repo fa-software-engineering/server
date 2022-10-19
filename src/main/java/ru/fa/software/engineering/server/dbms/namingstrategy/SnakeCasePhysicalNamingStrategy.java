@@ -1,4 +1,4 @@
-package ru.fa.software.engineering.rasserver.dbms.namingstrategy;
+package ru.fa.software.engineering.server.dbms.namingstrategy;
 
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;

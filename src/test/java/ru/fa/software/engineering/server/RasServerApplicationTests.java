@@ -1,4 +1,4 @@
-package ru.fa.software.engineering.rasserver;
+package ru.fa.software.engineering.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
