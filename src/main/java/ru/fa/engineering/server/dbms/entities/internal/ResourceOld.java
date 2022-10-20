@@ -6,13 +6,16 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.OffsetDateTime;
 
 @Entity
 @Getter
 @Setter
 @Where(clause = "deleted_at IS NULL")
-@Table(name = "skills")
-public class Skill extends InternalEntity<Long> {
-    private String title;
-    private String description;
+@Table(name = "resources")
+public class ResourceOld extends InternalEntity<Long> {
+    private String name;
+    private OffsetDateTime startDate;
+    private OffsetDateTime endDate;
+
 }

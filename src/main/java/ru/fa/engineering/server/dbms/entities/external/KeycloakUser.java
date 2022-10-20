@@ -3,12 +3,12 @@ package ru.fa.engineering.server.dbms.entities.external;
 
 import lombok.Getter;
 import lombok.Setter;
-import ru.fa.engineering.server.dbms.entities.internal.EmployeeProject;
+import ru.fa.engineering.server.dbms.entities.internal.Department;
 import ru.fa.engineering.server.dbms.entities.internal.EmployeeSkill;
-import ru.fa.engineering.server.dbms.entities.internal.Project;
-import ru.fa.engineering.server.dbms.entities.internal.Skill;
+import ru.fa.engineering.server.dbms.entities.internal.Resource;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
@@ -20,8 +20,11 @@ import java.util.List;
 public class KeycloakUser extends ExternalEntity<String> {
 
     @OneToMany(mappedBy = "employee")
-    private List<EmployeeProject> projects;
+    private List<Resource> projects;
 
     @OneToMany(mappedBy = "employee")
     private List<EmployeeSkill> skills;
+
+    @ManyToOne
+    private Department department;
 }
