@@ -40,7 +40,7 @@ public class Resource
 
     private OffsetDateTime endDate;
 
-    private String title;
+    private String name;
 
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false)

@@ -3,9 +3,11 @@ package ru.fa.engineering.server.dbms.entities.internal;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
+import ru.fa.engineering.server.dbms.entities.external.KeycloakUser;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.OffsetDateTime;
 
@@ -22,4 +24,10 @@ public class Task extends InternalEntity<Long> {
 
     @ManyToOne
     private Project project;
+
+    @ManyToOne
+    private KeycloakUser author;
+
+    @ManyToOne
+    private KeycloakUser executor;
 }

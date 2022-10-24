@@ -6,6 +6,7 @@ import lombok.Setter;
 import ru.fa.engineering.server.dbms.entities.internal.Department;
 import ru.fa.engineering.server.dbms.entities.internal.EmployeeSkill;
 import ru.fa.engineering.server.dbms.entities.internal.Resource;
+import ru.fa.engineering.server.dbms.entities.internal.Task;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -27,4 +28,10 @@ public class KeycloakUser extends ExternalEntity<String> {
 
     @ManyToOne
     private Department department;
+
+    @OneToMany(mappedBy = "author")
+    private List<Task> createdTasks;
+
+    @OneToMany(mappedBy = "executor")
+    private List<Task> assignedTasks;
 }
