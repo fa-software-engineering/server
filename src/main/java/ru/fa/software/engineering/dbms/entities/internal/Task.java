@@ -1,13 +1,12 @@
-package ru.fa.engineering.server.dbms.entities.internal;
+package ru.fa.software.engineering.dbms.entities.internal;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
-import ru.fa.engineering.server.dbms.entities.external.KeycloakUser;
+import ru.fa.software.engineering.dbms.entities.external.KeycloakUser;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.OffsetDateTime;
 

@@ -1,8 +1,8 @@
-package ru.fa.engineering.server.dbms.entities.internal;
+package ru.fa.software.engineering.dbms.entities.internal;
 
 import lombok.Getter;
 import lombok.Setter;
-import ru.fa.engineering.server.dbms.entities.AbstractSuperEntity;
+import ru.fa.software.engineering.dbms.entities.AbstractSuperEntity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

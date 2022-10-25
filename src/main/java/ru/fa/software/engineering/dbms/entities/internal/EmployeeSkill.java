@@ -1,12 +1,12 @@
-package ru.fa.engineering.server.dbms.entities.internal;
+package ru.fa.software.engineering.dbms.entities.internal;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
-import ru.fa.engineering.server.dbms.entities.AbstractSuperEntity;
-import ru.fa.engineering.server.dbms.entities.external.KeycloakUser;
+import ru.fa.software.engineering.dbms.entities.AbstractSuperEntity;
+import ru.fa.software.engineering.dbms.entities.external.KeycloakUser;
 
 import javax.persistence.*;
 import java.io.Serializable;

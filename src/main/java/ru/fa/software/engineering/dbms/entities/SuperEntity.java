@@ -1,4 +1,4 @@
-package ru.fa.engineering.server.dbms.entities;
+package ru.fa.software.engineering.dbms.entities;
 
 import java.io.Serializable;
 
