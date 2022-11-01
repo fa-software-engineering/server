@@ -1,4 +1,4 @@
-package ru.fa.software.engineering.dbms.entities.internal;
+package ru.fa.software.engineering.dbms.orm.internal;
 
 import lombok.Getter;
 import lombok.Setter;

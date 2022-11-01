@@ -1,12 +1,12 @@
-package ru.fa.software.engineering.dbms.entities.external;
+package ru.fa.software.engineering.dbms.orm.external;
 
 
 import lombok.Getter;
 import lombok.Setter;
-import ru.fa.software.engineering.dbms.entities.internal.Department;
-import ru.fa.software.engineering.dbms.entities.internal.EmployeeSkill;
-import ru.fa.software.engineering.dbms.entities.internal.Resource;
-import ru.fa.software.engineering.dbms.entities.internal.Task;
+import ru.fa.software.engineering.dbms.orm.internal.Department;
+import ru.fa.software.engineering.dbms.orm.internal.EmployeeSkill;
+import ru.fa.software.engineering.dbms.orm.internal.Resource;
+import ru.fa.software.engineering.dbms.orm.internal.Task;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;

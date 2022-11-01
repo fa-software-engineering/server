@@ -1,8 +1,8 @@
-package ru.fa.software.engineering.dbms.entities.external;
+package ru.fa.software.engineering.dbms.orm.external;
 
 import lombok.Getter;
 import lombok.Setter;
-import ru.fa.software.engineering.dbms.entities.AbstractEntity;
+import ru.fa.software.engineering.dbms.orm.AbstractEntity;
 
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;

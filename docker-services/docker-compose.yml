@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: "ras"
+    
+    ports:
+      - "5432:5432"
+    
+  keycloak:
+    image: jboss/keycloak
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: "/keycloak/config/realm-import.json"
+      DB_VENDOR: POSTGRES
+      DB_ADDR: "postgres"
+      DB_DATABASE: "ras"
+      DB_USER: "admin"
+      DB_PASSWORD: "1234"
+    volumes:
+      - ./keycloak/config:/keycloak/config
+    ports:
+      - "8180:8180"
+    depends_on:
+      - postgres
