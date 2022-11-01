@@ -1,5 +1,6 @@
-package ru.fa.software.engineering.dbms.entities;
+package ru.fa.software.engineering.dbms.orm;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.time.OffsetDateTime;
 @Getter
 @Setter
 public abstract class AbstractSuperEntity<IdType extends Serializable>
+        extends PanacheEntityBase
         implements SuperEntity<IdType> {
 
     private OffsetDateTime createdAt;

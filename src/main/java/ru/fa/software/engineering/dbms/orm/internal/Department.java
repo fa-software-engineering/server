@@ -1,9 +1,9 @@
-package ru.fa.software.engineering.dbms.entities.internal;
+package ru.fa.software.engineering.dbms.orm.internal;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
-import ru.fa.software.engineering.dbms.entities.external.KeycloakUser;
+import ru.fa.software.engineering.dbms.orm.external.KeycloakUser;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

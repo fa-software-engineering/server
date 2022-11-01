@@ -1,4 +1,4 @@
-package ru.fa.software.engineering.dbms.entities;
+package ru.fa.software.engineering.dbms.orm;
 
 import java.time.OffsetDateTime;
 
