@@ -3,7 +3,7 @@ package ru.fa.software.engineering.dbms.orm.internal;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
-import ru.fa.software.engineering.dbms.orm.external.KeycloakUser;
+import ru.fa.software.engineering.dbms.orm.external.Employee;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -25,8 +25,8 @@ public class Task extends InternalEntity<Long> {
     private Project project;
 
     @ManyToOne
-    private KeycloakUser author;
+    private Employee author;
 
     @ManyToOne
-    private KeycloakUser executor;
+    private Employee executor;
 }

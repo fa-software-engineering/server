@@ -3,7 +3,7 @@ package ru.fa.software.engineering.dbms.orm.internal;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
-import ru.fa.software.engineering.dbms.orm.external.KeycloakUser;
+import ru.fa.software.engineering.dbms.orm.external.Employee;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -23,7 +23,7 @@ public class Project extends InternalEntity<Long> {
     private OffsetDateTime endDate;
 
     @ManyToOne
-    private KeycloakUser owner;
+    private Employee owner;
 
     @OneToMany(mappedBy = "project")
     private List<Task> tasks;

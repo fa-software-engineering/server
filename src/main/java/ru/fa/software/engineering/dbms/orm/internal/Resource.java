@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
 import ru.fa.software.engineering.dbms.orm.AbstractSuperEntity;
-import ru.fa.software.engineering.dbms.orm.external.KeycloakUser;
+import ru.fa.software.engineering.dbms.orm.external.Employee;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -44,7 +44,7 @@ public class Resource
 
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false)
-    private KeycloakUser employee;
+    private Employee employee;
 
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false)

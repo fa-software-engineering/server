@@ -3,7 +3,7 @@ package ru.fa.software.engineering.dbms.orm.internal;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
-import ru.fa.software.engineering.dbms.orm.external.KeycloakUser;
+import ru.fa.software.engineering.dbms.orm.external.Employee;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -19,5 +19,5 @@ public class Department extends InternalEntity<Long> {
     private String title;
 
     @OneToMany(mappedBy = "department")
-    private List<KeycloakUser> employees;
+    private List<Employee> employees;
 }
