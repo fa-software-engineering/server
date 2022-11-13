@@ -13,6 +13,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,6 +56,7 @@ public class EmployeeRepository extends AbstractRepository<Employee, String> {
 
         EmployeeSkill employeeSkill = new EmployeeSkill();
         employeeSkill.setId(new EmployeeSkill.EmployeeSkillPK(employeeId, skillId));
+        employeeSkill.setCreatedAt(OffsetDateTime.now());
         employeeSkill.persist();
 
         return true;

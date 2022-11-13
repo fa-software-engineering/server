@@ -51,12 +51,11 @@ public abstract class AbstractRepository<
 
     @Transactional
     public EntityType getById(IdType id) {
-        return PanacheRepositoryBase.super.findById(id);
+        return findById(id);
     }
 
     @Transactional
     public EntityType create(@Valid EntityType newEntity) {
-
         persist(newEntity);
         return newEntity;
     }

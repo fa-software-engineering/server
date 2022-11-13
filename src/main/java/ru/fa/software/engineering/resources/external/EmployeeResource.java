@@ -29,10 +29,10 @@ public class EmployeeResource {
         return Response.ok(skillDto).build();
     }
 
-    @Path("/{employee_id}/skills")
+    @Path("/{employee_id}/skills/{skill_id}")
     @RolesAllowed("manager")
-    @PUT
-    public Response addSkillByEmployeeId(@PathParam("employee_id") String employeeId, long skillId) {
+    @POST
+    public Response addSkillByEmployeeId(@PathParam("employee_id") String employeeId, @PathParam("skill_id") long skillId) {
 
         boolean isAdded = employeeService.addSkillByEmployeeId(skillId, employeeId);
         if (isAdded) {
@@ -42,10 +42,10 @@ public class EmployeeResource {
         }
     }
 
-    @Path("/{employee_id}/skills")
+    @Path("/{employee_id}/skills/{skill_id}")
     @RolesAllowed("manager")
     @DELETE
-    public Response deleteSkillByEmployeeId(@PathParam("employee_id") String employeeId, long skillId) {
+    public Response deleteSkillByEmployeeId(@PathParam("employee_id") String employeeId, @PathParam("skill_id") long skillId) {
 
         boolean isDeleted = employeeService.deleteSkillByEmployeeId(employeeId, skillId);
         if (isDeleted) {
