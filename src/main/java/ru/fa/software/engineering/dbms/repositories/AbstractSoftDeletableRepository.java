@@ -7,9 +7,9 @@ import java.time.OffsetDateTime;
 
 
 public abstract class AbstractSoftDeletableRepository<
-        IdType extends Serializable,
-        EntityType extends SuperEntity<IdType>>
-        extends AbstractRepository<IdType, EntityType> {
+        EntityType extends SuperEntity<IdType>,
+        IdType extends Serializable>
+        extends AbstractRepository<EntityType, IdType> {
 
     public void deleteSoftById(IdType id) {
         EntityType entity = findById(id);
