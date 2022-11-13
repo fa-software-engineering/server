@@ -20,11 +20,6 @@ services:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
       KEYCLOAK_IMPORT: "/keycloak/config/realm-import.json"
-      DB_VENDOR: POSTGRES
-      DB_ADDR: "postgres"
-      DB_DATABASE: "ras"
-      DB_USER: "admin"
-      DB_PASSWORD: "1234"
     volumes:
       - ./keycloak/config:/keycloak/config
     ports:
