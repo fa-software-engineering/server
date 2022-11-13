@@ -17,6 +17,7 @@ public abstract class AbstractService<
     public abstract AbstractRepository<EntityType, IdType> getRepository();
 
     public abstract Class<DtoType> getDtoType();
+    public abstract Class<EntityType> getEntityType();
 
 
     public DtoType getById(IdType id) {
@@ -29,7 +30,7 @@ public abstract class AbstractService<
         return ModelMapperUtil.map(entity, getDtoType());
     }
 
-    public List<DtoType> getAll(IdType id) {
+    public List<DtoType> getAll() {
         return ModelMapperUtil.mapList(getRepository().getAll(), getDtoType());
     }
 
@@ -41,11 +42,15 @@ public abstract class AbstractService<
         return ModelMapperUtil.mapList(getRepository().getAll(skip, limit, like, fields), getDtoType());
     }
 
-    public DtoType create(EntityType entity) {
+    public DtoType create(DtoType dto) {
+        EntityType entity = ModelMapperUtil.map(dto, getEntityType());
+
         return ModelMapperUtil.map(getRepository().create(entity), getDtoType());
     }
 
-    public DtoType update(EntityType entity) {
+    public DtoType update(DtoType dto) {
+        EntityType entity = ModelMapperUtil.map(dto, getEntityType());
+
         return ModelMapperUtil.map(getRepository().update(entity), getDtoType());
     }
 

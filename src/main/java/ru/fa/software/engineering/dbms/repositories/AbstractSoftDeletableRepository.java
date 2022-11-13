@@ -11,12 +11,15 @@ public abstract class AbstractSoftDeletableRepository<
         IdType extends Serializable>
         extends AbstractRepository<EntityType, IdType> {
 
-    public void deleteSoftById(IdType id) {
+    public boolean deleteSoftById(IdType id) {
         EntityType entity = findById(id);
 
         if (entity != null) {
             entity.setDeletedAt(OffsetDateTime.now());
             persistAndFlush(entity);
+            return true;
         }
+
+        return false;
     }
 }
