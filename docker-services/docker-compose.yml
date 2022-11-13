@@ -2,27 +2,32 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres
+    image: "postgres"
     restart: always
     volumes:
-      - ./postgres/data:/var/lib/postgresql/data
+      - "./postgres/data:/var/lib/postgresql/data"
+      - "./postgres/init-scripts:/docker-entrypoint-initdb.d"
     environment:
-      POSTGRES_USER: "admin"
-      POSTGRES_PASSWORD: "1234"
-      POSTGRES_DB: "ras"
-    
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
     ports:
       - "5432:5432"
     
   keycloak:
-    image: jboss/keycloak
+    image: "jboss/keycloak"
     environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: admin
+      DB_PASSWORD: 1234
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
       KEYCLOAK_IMPORT: "/keycloak/config/realm-import.json"
     volumes:
-      - ./keycloak/config:/keycloak/config
+      - "./keycloak/config:/keycloak/config"
     ports:
       - "8180:8080"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_started

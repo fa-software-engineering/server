@@ -51,6 +51,11 @@ public abstract class AbstractResource<
         return Response.ok(dto).build();
     }
 
+    public Response create(DtoType dto) {
+        DtoType created = getService().create(dto);
+        return Response.ok(created).build();
+    }
+
     public Response update(IdType id, DtoType dto) {
         dto.setId(id);
 

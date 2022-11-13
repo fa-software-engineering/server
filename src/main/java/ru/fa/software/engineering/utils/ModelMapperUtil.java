@@ -23,6 +23,10 @@ public class ModelMapperUtil {
     }
 
     public static <S, T> List<T> mapList(Collection<S> source, Class<T> targetClass) {
+        if (source == null) {
+            return null;
+        }
+
         return source
                 .stream()
                 .map(element -> MAPPER.map(element, targetClass))
