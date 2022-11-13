@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "keycloak_users")
-public class KeycloakUser extends ExternalEntity<String> {
+public class Employee extends ExternalEntity<String> {
 
     @OneToMany(mappedBy = "employee")
     private List<Resource> projects;

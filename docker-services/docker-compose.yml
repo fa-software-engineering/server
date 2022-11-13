@@ -28,6 +28,6 @@ services:
     volumes:
       - ./keycloak/config:/keycloak/config
     ports:
-      - "8180:8180"
+      - "8180:8080"
     depends_on:
       - postgres
