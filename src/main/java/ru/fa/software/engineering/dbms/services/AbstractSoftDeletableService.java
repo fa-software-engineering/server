@@ -6,7 +6,7 @@ import ru.fa.software.engineering.dto.AbstractDto;
 
 import java.io.Serializable;
 
-public abstract class AbstractSofDeletableService<
+public abstract class AbstractSoftDeletableService<
         EntityType extends SuperEntity<IdType>,
         DtoType extends AbstractDto<IdType>,
         IdType extends Serializable> extends AbstractService<EntityType, DtoType, IdType> {
@@ -14,7 +14,7 @@ public abstract class AbstractSofDeletableService<
     public abstract AbstractSoftDeletableRepository<EntityType, IdType> getRepository();
 
 
-    public void deleteSoftById(IdType id) {
-        getRepository().deleteSoftById(id);
+    public boolean deleteSoftById(IdType id) {
+        return getRepository().deleteSoftById(id);
     }
 }
