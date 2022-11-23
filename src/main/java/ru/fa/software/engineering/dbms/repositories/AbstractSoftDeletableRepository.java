@@ -2,10 +2,13 @@ package ru.fa.software.engineering.dbms.repositories;
 
 import ru.fa.software.engineering.dbms.orm.SuperEntity;
 
+import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 
+@Transactional
 public abstract class AbstractSoftDeletableRepository<
         EntityType extends SuperEntity<IdType>,
         IdType extends Serializable>
@@ -16,10 +19,15 @@ public abstract class AbstractSoftDeletableRepository<
 
         if (entity != null) {
             entity.setDeletedAt(OffsetDateTime.now());
-            persistAndFlush(entity);
             return true;
         }
 
         return false;
+    }
+
+    public EntityType create(@Valid EntityType newEntity) {
+        newEntity.setCreatedAt(OffsetDateTime.now());
+        persist(newEntity);
+        return newEntity;
     }
 }
