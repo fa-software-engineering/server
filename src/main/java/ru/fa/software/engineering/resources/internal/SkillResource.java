@@ -8,10 +8,7 @@ import ru.fa.software.engineering.resources.AbstractResource;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 
@@ -34,16 +31,33 @@ public class SkillResource extends AbstractResource<Skill, SkillDto, Long> {
     }
 
     @Override
+    @GET
+    @RolesAllowed("employee")
+    @Path("/{skill_id}")
+    public Response getById(@PathParam("skill_id") Long id) {
+        return super.getById(id);
+    }
+
+    @Override
+    @POST
+    @RolesAllowed("manager")
+    public Response create(SkillDto dto) {
+        return super.create(dto);
+    }
+
     @PUT
     @RolesAllowed("manager")
-    public Response update(SkillDto dto) {
+    @Path("/{skill_id}")
+    public Response update(@PathParam("skill_id")Long id, SkillDto dto) {
+        dto.setId(id);
         return super.update(dto);
     }
 
     @Override
     @DELETE
     @RolesAllowed("manager")
-    public Response delete(Long id) {
+    @Path("/{skill_id}")
+    public Response delete(@PathParam("skill_id") Long id) {
         return super.delete(id);
     }
 }

@@ -6,6 +6,7 @@ import ru.fa.software.engineering.dbms.services.internal.ResourceService;
 import ru.fa.software.engineering.dto.internal.ResourceDto;
 import ru.fa.software.engineering.resources.AbstractResource;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -22,12 +23,14 @@ public class ResourceResource extends AbstractResource<Resource, ResourceDto, Re
     }
 
     @GET
+    @RolesAllowed("employee")
     public Response getById(@QueryParam("employeeId") String employeeId, @QueryParam("projectId") long projectId) {
         Resource.EmployeeProjectPK id = new Resource.EmployeeProjectPK(employeeId, projectId);
         return super.getById(id);
     }
 
     @PUT
+    @RolesAllowed("manager")
     public Response update(@QueryParam("employeeId") String employeeId, @QueryParam("projectId") long projectId, ResourceDto dto) {
         dto.setProjectId(projectId);
         dto.setEmployeeId(employeeId);
@@ -36,11 +39,13 @@ public class ResourceResource extends AbstractResource<Resource, ResourceDto, Re
 
     @Override
     @GET
+    @RolesAllowed("employee")
     public Response getAll(Integer skip, Integer limit, String search, String... fields) {
         return super.getAll(skip, limit, search, fields);
     }
 
     @DELETE
+    @RolesAllowed("manager")
     public Response delete(@QueryParam("employeeId") String employeeId, @QueryParam("projectId") long projectId) {
         Resource.EmployeeProjectPK id = new Resource.EmployeeProjectPK(employeeId, projectId);
         return super.delete(id);

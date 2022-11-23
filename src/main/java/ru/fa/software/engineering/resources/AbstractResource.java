@@ -2,7 +2,6 @@ package ru.fa.software.engineering.resources;
 
 import ru.fa.software.engineering.dbms.orm.SuperEntity;
 import ru.fa.software.engineering.dbms.services.AbstractSoftDeletableService;
-import ru.fa.software.engineering.dto.AbstractDto;
 import ru.fa.software.engineering.dto.PageDto;
 
 import javax.ws.rs.core.Response;
@@ -51,8 +50,12 @@ public abstract class AbstractResource<
         return Response.ok(dto).build();
     }
 
-    public Response update(DtoType dto) {
+    public Response create(DtoType dto) {
+        DtoType created = getService().create(dto);
+        return Response.ok(created).build();
+    }
 
+    public Response update(DtoType dto) {
         DtoType updated = getService().update(dto);
 
         if (updated != null) {
