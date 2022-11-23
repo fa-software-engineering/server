@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public abstract class AbstractSoftDeletableService<
         EntityType extends SuperEntity<IdType>,
-        DtoType extends AbstractDto<IdType>,
+        DtoType,
         IdType extends Serializable> extends AbstractService<EntityType, DtoType, IdType> {
 
     public abstract AbstractSoftDeletableRepository<EntityType, IdType> getRepository();

@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class AbstractService<
         EntityType extends Identity<IdType>,
-        DtoType extends AbstractDto<IdType>,
+        DtoType,
         IdType extends Serializable> {
 
     public abstract AbstractRepository<EntityType, IdType> getRepository();

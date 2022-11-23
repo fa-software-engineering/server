@@ -36,8 +36,8 @@ public class SkillResource extends AbstractResource<Skill, SkillDto, Long> {
     @Override
     @PUT
     @RolesAllowed("manager")
-    public Response update(Long id, SkillDto dto) {
-        return super.update(id, dto);
+    public Response update(SkillDto dto) {
+        return super.update(dto);
     }
 
     @Override

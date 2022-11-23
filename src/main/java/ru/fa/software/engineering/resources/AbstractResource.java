@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class AbstractResource<
         EntityType extends SuperEntity<IdType>,
-        DtoType extends AbstractDto<IdType>,
+        DtoType,
         IdType extends Serializable> {
 
     public abstract AbstractSoftDeletableService<EntityType, DtoType, IdType> getService();
@@ -51,8 +51,7 @@ public abstract class AbstractResource<
         return Response.ok(dto).build();
     }
 
-    public Response update(IdType id, DtoType dto) {
-        dto.setId(id);
+    public Response update(DtoType dto) {
 
         DtoType updated = getService().update(dto);
 
