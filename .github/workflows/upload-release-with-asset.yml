@@ -1,0 +1,25 @@
+name: Upload Release Asset
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+' # 1.10.1 или 2.0.0 или 3.0.0-alpha
+
+jobs:
+  build:
+    name: Upload Release Asset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.6.0
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: mvn -DskipTests=true --file pom.xml package
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./target/server-1.0-SNAPSHOT.jar
