@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.fa.software.engineering</groupId>
     <artifactId>server</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <properties>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <maven.compiler.release>11</maven.compiler.release>
@@ -178,7 +178,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com</url>
+            <url>https://maven.pkg.github.com/fa-software-engineering/server</url>
         </repository>
     </distributionManagement>
 </project>
