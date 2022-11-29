@@ -1,0 +1,27 @@
+name: Publish package to GitHub Packages
+
+on:
+  push:
+    branches:
+      - 'releases/**'
+    tags:
+      - v*.*.*
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.6.0
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Publish package
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
