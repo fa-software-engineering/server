@@ -2,7 +2,6 @@ package ru.fa.software.engineering.resources;
 
 import ru.fa.software.engineering.dbms.orm.SuperEntity;
 import ru.fa.software.engineering.dbms.services.AbstractSoftDeletableService;
-import ru.fa.software.engineering.dto.AbstractDto;
 import ru.fa.software.engineering.dto.PageDto;
 
 import javax.ws.rs.core.Response;
@@ -11,7 +10,7 @@ import java.util.List;
 
 public abstract class AbstractResource<
         EntityType extends SuperEntity<IdType>,
-        DtoType extends AbstractDto<IdType>,
+        DtoType,
         IdType extends Serializable> {
 
     public abstract AbstractSoftDeletableService<EntityType, DtoType, IdType> getService();
@@ -56,9 +55,7 @@ public abstract class AbstractResource<
         return Response.ok(created).build();
     }
 
-    public Response update(IdType id, DtoType dto) {
-        dto.setId(id);
-
+    public Response update(DtoType dto) {
         DtoType updated = getService().update(dto);
 
         if (updated != null) {

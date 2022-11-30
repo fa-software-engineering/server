@@ -45,12 +45,12 @@ public class SkillResource extends AbstractResource<Skill, SkillDto, Long> {
         return super.create(dto);
     }
 
-    @Override
     @PUT
     @RolesAllowed("manager")
     @Path("/{skill_id}")
     public Response update(@PathParam("skill_id")Long id, SkillDto dto) {
-        return super.update(id, dto);
+        dto.setId(id);
+        return super.update(dto);
     }
 
     @Override
