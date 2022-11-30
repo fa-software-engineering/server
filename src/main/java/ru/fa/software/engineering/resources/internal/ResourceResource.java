@@ -29,6 +29,12 @@ public class ResourceResource extends AbstractResource<Resource, ResourceDto, Re
         return super.getById(id);
     }
 
+    @POST
+    @RolesAllowed("manager")
+    public Response create(ResourceDto resourceDto) {
+        return super.create(resourceDto);
+    }
+
     @PUT
     @RolesAllowed("manager")
     public Response update(@QueryParam("employeeId") String employeeId, @QueryParam("projectId") long projectId, ResourceDto dto) {
@@ -37,11 +43,12 @@ public class ResourceResource extends AbstractResource<Resource, ResourceDto, Re
         return super.update(dto);
     }
 
-    @Override
     @GET
     @RolesAllowed("employee")
-    public Response getAll(Integer skip, Integer limit, String search, String... fields) {
-        return super.getAll(skip, limit, search, fields);
+    public Response getAll(@QueryParam("skip") Integer skip,
+                           @QueryParam("limit") Integer limit,
+                           @QueryParam("search") String search) {
+        return super.getAll(skip, limit, search, "name");
     }
 
     @DELETE
