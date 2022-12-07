@@ -26,8 +26,8 @@ public class DepartmentResource extends AbstractResource<Department, DepartmentD
 
     @Override
     @GET
-    @Path("/{id}")
-    public Response getById(@PathParam("id") Long id) {
+    @Path("/{department_id}")
+    public Response getById(@PathParam("department_id") Long id) {
         return super.getById(id);
     }
 
@@ -37,15 +37,16 @@ public class DepartmentResource extends AbstractResource<Department, DepartmentD
         return super.create(dto);
     }
 
-    @Override
     @PUT
-    public Response update(DepartmentDto dto) {
+    @Path("/{department_id}")
+    public Response update(@PathParam("department_id")Long id, DepartmentDto dto) {
         return super.update(dto);
     }
 
     @Override
     @DELETE
-    public Response delete(Long id) {
+    @Path("/{department_id}")
+    public Response delete(@PathParam("department_id") Long id) {
         return super.delete(id);
     }
 
