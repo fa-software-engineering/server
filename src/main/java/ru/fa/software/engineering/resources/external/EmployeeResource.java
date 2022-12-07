@@ -42,16 +42,5 @@ public class EmployeeResource {
         }
     }
 
-    @Path("/{employee_id}/skills/{skill_id}")
-    @RolesAllowed("manager")
-    @DELETE
-    public Response deleteSkillByEmployeeId(@PathParam("employee_id") String employeeId, @PathParam("skill_id") long skillId) {
 
-        boolean isDeleted = employeeService.deleteSkillByEmployeeId(employeeId, skillId);
-        if (isDeleted) {
-            return Response.ok().build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-    }
 }
