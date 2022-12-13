@@ -25,7 +25,7 @@ public abstract class AbstractSoftDeletableRepository<
         return false;
     }
 
-    public EntityType create(@Valid EntityType newEntity) {
+    public EntityType create(EntityType newEntity) {
         newEntity.setCreatedAt(OffsetDateTime.now());
         persist(newEntity);
         return newEntity;

@@ -1,5 +1,6 @@
 package ru.fa.software.engineering.resources.internal;
 
+import org.wildfly.common.annotation.NotNull;
 import ru.fa.software.engineering.dbms.orm.internal.Department;
 import ru.fa.software.engineering.dbms.services.AbstractSoftDeletableService;
 import ru.fa.software.engineering.dbms.services.internal.DepartmentService;
@@ -7,6 +8,7 @@ import ru.fa.software.engineering.dto.internal.DepartmentDto;
 import ru.fa.software.engineering.resources.AbstractResource;
 
 import javax.inject.Inject;
+import javax.validation.constraints.NotBlank;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
@@ -33,7 +35,7 @@ public class DepartmentResource extends AbstractResource<Department, DepartmentD
 
     @Override
     @POST
-    public Response create(DepartmentDto dto) {
+    public Response create(@NotNull DepartmentDto dto) {
         return super.create(dto);
     }
 

@@ -51,6 +51,10 @@ public abstract class AbstractResource<
     }
 
     public Response create(DtoType dto) {
+        if (dto == null) {
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }
+
         DtoType created = getService().create(dto);
         return Response.ok(created).build();
     }

@@ -1,99 +1,100 @@
 package ru.fa.software.engineering.resources.internal;
 
-
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import ru.fa.software.engineering.AbstractTest;
 import ru.fa.software.engineering.TestEnvironment;
-import ru.fa.software.engineering.dbms.orm.internal.Skill;
-import ru.fa.software.engineering.dto.internal.SkillDto;
-import ru.fa.software.engineering.utils.KeycloakAdminClient;
+import ru.fa.software.engineering.dbms.orm.internal.Department;
+import ru.fa.software.engineering.dto.internal.DepartmentDto;
 import ru.fa.software.engineering.utils.ModelMapperUtil;
 
-import javax.inject.Inject;
-
 @QuarkusTest
-class SkillResourceTest extends AbstractTest {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class DepartmentResourceTest extends AbstractTest {
 
-    @Inject
-    KeycloakAdminClient keycloakAdminClient;
-
+    @Override
+    @BeforeAll
+    public void initTestData() {
+        super.initTestData();
+    }
 
     @Test
     void getAll() {
-        String gotSkills = RestAssured
+        String response = RestAssured
                 .given()
                 .auth()
                 .oauth2(keycloakAdminClient.getAccessToken("admin", "admin"))
                 .header("Content-Type", "application/json")
-                .when().get("/skills/")
+                .when().get("/departments/")
                 .then().statusCode(200).extract().asString();
 
-        System.out.println(gotSkills);
+        System.out.println(response);
     }
 
     @Test
     void getById() {
-        Skill skill = TestEnvironment.TestData.Skills.initSkill1;
+        Department department = TestEnvironment.TestData.Departments.initDepartment1;
 
-        String gotSkill = RestAssured
+        String response = RestAssured
                 .given()
                 .auth()
                 .oauth2(keycloakAdminClient.getAccessToken("admin", "admin"))
                 .header("Content-Type", "application/json")
-                .when().get("/skills/" + skill.getId().toString())
+                .when().get("/departments/" + department.getId().toString())
                 .then().statusCode(200).extract().asString();
 
-        System.out.println(gotSkill);
-
+        System.out.println(response);
     }
 
     @Test
     void create() {
-        Skill skill = new Skill();
-        skill.setTitle("Some skill test");
-        skill.setDescription("Test-nothing");
+        DepartmentDto department = new DepartmentDto();
+        department.setTitle("created department");
 
-        SkillDto skillDto = ModelMapperUtil.map(skill, SkillDto.class);
-
-        RestAssured
+        String response = RestAssured
                 .given()
                 .auth()
                 .oauth2(keycloakAdminClient.getAccessToken("admin", "admin"))
                 .header("Content-Type", "application/json")
-                .body(skillDto)
-                .when().post("/skills")
+                .body(department)
+                .when().post("/departments/")
                 .then().statusCode(200).extract().asString();
+
+        System.out.println(response);
+
     }
 
     @Test
     void update() {
-        Skill skill = TestEnvironment.TestData.Skills.initSkill2;
-        skill.setTitle("Updated skill");
+        Department department = TestEnvironment.TestData.Departments.initDepartment1;
 
-        SkillDto skillDto = ModelMapperUtil.map(skill, SkillDto.class);
+        DepartmentDto departmentDto = ModelMapperUtil.map(department, DepartmentDto.class);
+        departmentDto.setTitle("updated department 1");
 
-        String ok = RestAssured
+        String response = RestAssured
                 .given()
                 .auth()
                 .oauth2(keycloakAdminClient.getAccessToken("admin", "admin"))
                 .header("Content-Type", "application/json")
-                .body(skillDto)
-                .when().put("/skills/" + skill.getId().toString())
+                .body(departmentDto)
+                .when().put("/departments/" + departmentDto.getId().toString())
                 .then().statusCode(200).extract().asString();
-        System.out.println(ok);
+
+        System.out.println(response);
     }
 
     @Test
     void delete() {
-        Skill skill = TestEnvironment.TestData.Skills.initSkill3;
+        Department department = TestEnvironment.TestData.Departments.initDepartment3;
 
         String ok = RestAssured
                 .given()
                 .auth()
                 .oauth2(keycloakAdminClient.getAccessToken("admin", "admin"))
-                .when().delete("/skills/" + skill.getId().toString())
+                .when().delete("/departments/" + department.getId().toString())
                 .then().statusCode(200).extract().asString();
         System.out.println(ok);
     }

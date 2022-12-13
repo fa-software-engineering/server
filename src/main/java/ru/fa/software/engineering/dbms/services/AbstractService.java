@@ -43,6 +43,10 @@ public abstract class AbstractService<
     }
 
     public DtoType create(DtoType dto) {
+        if (dto == null) {
+            return  null;
+        }
+
         EntityType entity = ModelMapperUtil.map(dto, getEntityType());
 
         return ModelMapperUtil.map(getRepository().create(entity), getDtoType());
