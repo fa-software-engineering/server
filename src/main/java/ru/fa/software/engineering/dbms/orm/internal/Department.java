@@ -1,7 +1,6 @@
 package ru.fa.software.engineering.dbms.orm.internal;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 import ru.fa.software.engineering.dbms.orm.external.Employee;
 

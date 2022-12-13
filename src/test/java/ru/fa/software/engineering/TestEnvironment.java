@@ -1,10 +1,7 @@
 package ru.fa.software.engineering;
 
 import ru.fa.software.engineering.dbms.orm.external.Employee;
-import ru.fa.software.engineering.dbms.orm.internal.EmployeeSkill;
-import ru.fa.software.engineering.dbms.orm.internal.Project;
-import ru.fa.software.engineering.dbms.orm.internal.Resource;
-import ru.fa.software.engineering.dbms.orm.internal.Skill;
+import ru.fa.software.engineering.dbms.orm.internal.*;
 import ru.fa.software.engineering.dbms.repositories.external.EmployeeRepository;
 import ru.fa.software.engineering.dbms.services.external.EmployeeService;
 import ru.fa.software.engineering.utils.KeycloakAdminClient;
@@ -70,6 +67,11 @@ public class TestEnvironment {
             public static Resource initResource3;
         }
 
+        public static class Departments {
+            public static Department initDepartment1;
+            public static Department initDepartment2;
+            public static Department initDepartment3;
+        }
     }
 
     public void initEmployees() {
@@ -168,6 +170,27 @@ public class TestEnvironment {
         TestData.Resources.initResource3 = initResource3;
     }
 
+    public void initDepartments() {
+        Department initDepartment1 = new Department();
+        initDepartment1.setTitle("initDepartment1");
+        initDepartment1.setCreatedAt(OffsetDateTime.now());
+        initDepartment1.persist();
+
+        Department initDepartment2 = new Department();
+        initDepartment2.setTitle("initDepartment1");
+        initDepartment2.setCreatedAt(OffsetDateTime.now());
+        initDepartment2.persist();
+
+        Department initDepartment3 = new Department();
+        initDepartment3.setTitle("initDepartment1");
+        initDepartment3.setCreatedAt(OffsetDateTime.now());
+        initDepartment3.persist();
+
+        TestData.Departments.initDepartment1 = initDepartment1;
+        TestData.Departments.initDepartment2 = initDepartment2;
+        TestData.Departments.initDepartment3 = initDepartment3;
+    }
+
 
     @Transactional
     public void initData() {
@@ -175,5 +198,6 @@ public class TestEnvironment {
         initEmployeeSkills();
         initProjects();
         initResources();
+        initDepartments();
     }
 }

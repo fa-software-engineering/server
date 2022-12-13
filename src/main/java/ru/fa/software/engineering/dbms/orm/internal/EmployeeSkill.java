@@ -1,15 +1,13 @@
 package ru.fa.software.engineering.dbms.orm.internal;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 import ru.fa.software.engineering.dbms.orm.AbstractSuperEntity;
 import ru.fa.software.engineering.dbms.orm.external.Employee;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -24,8 +22,10 @@ public class EmployeeSkill extends
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
+    @EqualsAndHashCode
     public static class EmployeeSkillPK implements Serializable {
         @Column(name = "employee_id")
+        @NonNull
         private String employeeId;
         @Column(name = "skill_id")
         private long skillId;

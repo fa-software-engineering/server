@@ -9,17 +9,12 @@ import ru.fa.software.engineering.AbstractTest;
 import ru.fa.software.engineering.TestEnvironment;
 import ru.fa.software.engineering.dbms.orm.internal.Resource;
 import ru.fa.software.engineering.dto.internal.ResourceDto;
-import ru.fa.software.engineering.utils.KeycloakAdminClient;
 import ru.fa.software.engineering.utils.ModelMapperUtil;
 
-import javax.inject.Inject;
 
 @QuarkusTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ResourceResourceTest extends AbstractTest {
-
-    @Inject
-    KeycloakAdminClient keycloakAdminClient;
 
     @Override
     @BeforeAll
