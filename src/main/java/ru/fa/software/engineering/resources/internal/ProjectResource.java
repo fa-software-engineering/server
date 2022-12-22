@@ -21,6 +21,12 @@ public class ProjectResource extends AbstractResource<Project, ProjectDto, Long>
         return projectService;
     }
 
+    @GET
+    @Path("/{project_id}/tasks")
+    public Response getTasks(@PathParam("project_id") long projectId) {
+        return Response.ok(projectService.getTasksByProjectId(projectId)).build();
+    }
+
     @Override
     @GET
     public Response getAll(Integer skip, Integer limit, String search, String... fields) {

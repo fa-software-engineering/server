@@ -3,7 +3,6 @@ package ru.fa.software.engineering.dbms.repositories;
 import ru.fa.software.engineering.dbms.orm.SuperEntity;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 

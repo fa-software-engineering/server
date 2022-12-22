@@ -8,7 +8,6 @@ import ru.fa.software.engineering.dto.internal.DepartmentDto;
 import ru.fa.software.engineering.resources.AbstractResource;
 
 import javax.inject.Inject;
-import javax.validation.constraints.NotBlank;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
