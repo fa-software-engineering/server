@@ -7,7 +7,6 @@ import ru.fa.software.engineering.dbms.orm.external.Employee;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Getter
